@@ -2,10 +2,22 @@
   "name": "shinobu",
   "version": "1.0.0",
   "description": "chatgpt powered git commit and PR assistant",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "bin": {
+    "my-ts-cli": "./bin/cli.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "conf": "^11.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }
