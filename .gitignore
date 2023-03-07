@@ -17,3 +17,5 @@ build/
 .pnp/
 bower_components/
 jspm_packages/
+
+.env.local
