@@ -13,7 +13,12 @@ program
 
 // NOTE: Commits will already be staged before running pre-commit hook
 // Run git diff command and capture output in a variable
-exec("git diff --staged", (error, stdout, stderr) => {
+
+const excludes = ["package-lock.json", "pnpm-lock.yaml", "*.lock"].map(
+  (file) => `:(exclude)${file}`
+);
+
+exec(`git diff --staged ${excludes.join(` `)}`, (error, stdout, stderr) => {
   if (error) {
     console.error(`Error executing git diff: ${error}`);
     return;
