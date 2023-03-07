@@ -32,13 +32,16 @@ const excludes = ["package-lock.json", "pnpm-lock.yaml", "*.lock"].map(
   (file) => `:(exclude)${file}`
 );
 
-exec(`git diff --staged ${excludes.join(` `)}`, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error executing git diff: ${error}`);
-    return;
+exec(
+  `git diff --staged -- '${excludes.join(` `)}'`,
+  (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing git diff: ${error}`);
+      return;
+    }
+
+    const gitDiff = stdout;
+
+    console.log(gitDiff);
   }
-
-  const gitDiff = stdout;
-
-  console.log(gitDiff);
-});
+);
