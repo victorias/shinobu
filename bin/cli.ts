@@ -64,4 +64,4 @@ function prepareCommitMessage() {
   );
 }
 
-prepareCommitMessage();
+module.exports = prepareCommitMessage;
